@@ -1,0 +1,328 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"> </script>
+<style>
+/*! CSS Used from: https://keratincomplex.com/dist/temp/temp.css */
+.sbc-container{width:calc(100% - 64px);max-width:1400px;margin:0 auto;}
+.p-resources__downloads__row__container{display:flex;justify-content:flex-start;flex-wrap:wrap;}
+.p-resources__downloads__item{flex:0 0 calc(100% - 64px);display:flex;justify-content:center;align-items:center;text-decoration:none;color:#000;margin:0 24px 64px;}
+.p-resources__downloads__item__image{position:relative;flex:0 0 calc(50% - 16px);margin-right:16px;}
+.p-resources__downloads__item__link{flex:0 0 50%;}
+.p-resources__downloads__item__link a{display:block;font-family:Avenir LT W01_65 Medium1475532,Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;color:#000;margin-top:8px;}
+@media (max-width: 1150px){
+.p-resources__downloads__item{flex:0 0 calc(100% - 64px);margin:0 16px 32px;}
+}
+@media (max-width: 640px){
+.p-resources__downloads__item{flex:0 0 100%;margin:0 0 32px;}
+}
+/*! CSS Used from: https://keratincomplex.com/dist/css/consumer.3bfb1e7e99915e4f16a3.css */
+h1{font-size:2em;margin:.67em 0;}
+a{background-color:transparent;-webkit-text-decoration-skip:objects;}
+strong{font-weight:inherit;font-weight:bolder;}
+small{font-size:80%;}
+img{border-style:none;}
+*,:after,:before{box-sizing:inherit;}
+h1{font-family:Didot LT W01 Bold,sans-serif;font-weight:400;font-size:2.875rem;line-height:1.34783;margin:0 0 .5em;}
+a{color:#000;}
+img{max-width:100%;height:auto;}
+strong{font-family:Avenir LT W01_85 Heavy1475544,Helvetica Neue,Helvetica,Arial,sans-serif;}
+strong{font-weight:400;}
+/*! CSS Used fontfaces */
+@font-face{font-family:Avenir LT W01_65 Medium1475532;src:url("https://keratincomplex.com/dist/fonts/Avenir LT W01_65 Medium1475532.eot") format("eot"),url("https://keratincomplex.com/dist/fonts/Avenir LT W01_65 Medium1475532.woff2") format("woff2"),url("https://keratincomplex.com/dist/fonts/Avenir LT W01_65 Medium1475532.woff") format("woff"),url("https://keratincomplex.com/dist/fonts/Avenir LT W01_65 Medium1475532.ttf") format("truetype");}
+@font-face{font-family:Didot LT W01 Bold;src:url("https://keratincomplex.com/dist/fonts/Didot LT W01 Bold.eot") format("eot"),url("https://keratincomplex.com/dist/fonts/Didot LT W01 Bold.woff2") format("woff2"),url("https://keratincomplex.com/dist/fonts/Didot LT W01 Bold.woff") format("woff"),url("https://keratincomplex.com/dist/fonts/Didot LT W01 Bold.ttf") format("truetype");}
+@font-face{font-family:Avenir LT W01_85 Heavy1475544;src:url("https://keratincomplex.com/dist/fonts/Avenir LT W01_85 Heavy1475544.eot") format("eot"),url("https://keratincomplex.com/dist/fonts/Avenir LT W01_85 Heavy1475544.woff2") format("woff2"),url("https://keratincomplex.com/dist/fonts/Avenir LT W01_85 Heavy1475544.woff") format("woff"),url("https://keratincomplex.com/dist/fonts/Avenir LT W01_85 Heavy1475544.ttf") format("truetype");}  
+.dnld_share{
+  width:100%;
+  display:flex;
+}
+.dnld{
+  width:40%;
+  display:block;
+  float:left;
+  
+} 
+.share{
+  width:60%;
+  display:block;
+  float:left;
+  } 
+.article-content-css{
+  
+  margin-bottom:30px;
+}
+  @media only screen and (max-width: 767px){
+/* .p-resources__downloads__item {
+    
+    display: block;
+  }    */
+.p-resources__downloads__item {
+    flex: 0 0 100%;
+    margin: 0 0 20px;
+    width: 100%;
+    display: block;
+}
+.dnld{
+  width:50%;
+  
+  
+} 
+.share{
+  width:50%;
+  
+  }     
+    }
+span#imag_id_hide {
+    opacity: 0;
+}
+  
+  
+.clipboard {
+  position: relative;
+}
+/* You just need to get this field */
+.copy-input {
+/*   max-width: 275px; */
+  width: 100%;
+  cursor: pointer;
+  background-color: #eaeaeb;
+  border:none;
+  color:#6c6c6c;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 15px 45px 15px 15px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 3px 15px #b8c6db;
+  -moz-box-shadow: 0 3px 15px #b8c6db;
+  -webkit-box-shadow: 0 3px 15px #b8c6db;
+}
+.copy-input:focus {
+  outline:none;
+}
+
+.copy-btn {
+  width:40px;
+  background-color: #eaeaeb;
+  font-size: 18px;
+  padding: 6px 9px;
+  border-radius: 5px;
+  border:none;
+  color:#6c6c6c;
+  margin-left:-50px;
+  transition: all .4s;
+}
+.copy-btn:hover {
+  transform: scale(1.3);
+  color:#1a1a1a;
+  cursor:pointer;
+}
+
+.copy-btn:focus {
+  outline:none;
+}
+
+.copied {
+  font-family: 'Montserrat', sans-serif;
+  width: 75px;
+  display: none;
+  position:fixed;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	margin: auto;
+  color:#000;
+  padding: 15px 15px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 3px 15px #b8c6db;
+  -moz-box-shadow: 0 3px 15px #b8c6db;
+  -webkit-box-shadow: 0 3px 15px #b8c6db;
+} 
+h1.sbc__resource-single-title {
+    text-align: center;
+}  
+</style>
+
+<div class="p-plp">
+		<div class="sbc-container">
+			<h1 class="sbc__resource-single-title">GK Hair Email(English)</h1>
+			
+			<div class="p-resources__downloads">
+				<div class="p-resources__downloads__container">
+					<div class="p-resources__downloads__row" id="brandmaterialsToggle" style="display: block;">
+						<div class="p-resources__downloads__row__container">
+	                      {% assign count = 0 %}
+                         
+                        
+                           {% for block in section.blocks %}
+                               {%- assign img_url = block.settings.post_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                               {%- assign article_text = block.settings.content |  strip_html -%}
+                           {% assign count = count | plus: 1 %}
+                           					
+                                    {% assign image_id_view = article.image.id %}
+							           <div class="p-resources__downloads__item">
+											<div class="p-resources__downloads__item__image">
+												 <img id="{{ img_id }}"
+                                                     class="article__grid-image lazyload"
+                                                     src="{{ block.settings.post_image | img_url: '500x500' }}"
+                                                     data-src="{{ img_url }}"
+                                                     data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                                                     data-aspectratio="{{ block.settings.post_image.aspect_ratio }}"
+                                                     data-sizes="auto"
+                                                     alt="">
+											</div>
+											<div class="p-resources__downloads__item__link">
+                                              <div class="copy-input article-content-css" >
+                                                <h2>Post Title: {{ block.settings.title }} </h2>
+                                                <h4>Post Category:{{ block.settings.category }} </h5>
+                                                <p class="article_content">Post Content: {{ block.settings.content | strip_html }}</p>
+                                                
+                                              </div>
+                                                   
+                                                  <div class="dnld_share"> 
+                                                
+                                                     <span class="dnld">
+                                                      
+                                                         <button onclick="download('{{ block.settings.post_image | img_url: 'master' }}', {{ block.settings.post_image.id }})">Download Image</button>
+                                                       
+                                                     </span>
+                                                     <span  class="share">
+                                                         <button class="btn" data-clipboard-text="{{ block.settings.title }}-{{ block.settings.content | strip_html }}">Copy Text  <i class="fa fa-copy"></i></button>
+                                                
+                                                     </span>
+                                                  </div>
+											</div>
+                                         
+										</div>
+                             {% endfor %}
+                          
+			<div id="copied-success" class="copied">
+              <span>Copied!</span>
+            </div>				
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+
+{% schema %}
+  {
+  "name": "FB Custom Posts",
+  "class":"pfl-wrapper pfl-2-tmpl",
+  "settings": [
+    {
+      "type":"header",
+      "content":"Filter"
+    },
+    {
+      "type": "checkbox",
+      "id": "show-breadcrumbs",
+      "label": "Show breadcrumbs",
+      "default": true
+    },
+
+    {
+      "type":"header",
+      "content":"Style"
+    },
+    {
+      "type":"color",
+      "id":"text_color",
+      "label":"Text Color",
+      "default":"#fff"
+    }
+
+  ],
+  "blocks":[
+    {
+      "name":"FB Custom Post",
+      "type":"images",
+      "settings":[
+        {
+          "type":"text",
+          "id":"title",
+          "label":"Title",
+          "default":"Social Email Title"
+        },
+        {
+          "type":"text",
+          "id":"category",
+          "label":"category",
+          "default":"Social Email Category"
+        },
+        {
+          "type":"textarea",
+          "id":"content",
+          "label":"Post Content",
+          "default":"Post Content"
+        },
+        {
+          "type":"image_picker",
+          "id":"post_image",
+          "label":"Post Image"
+        }
+
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+
+
+{% javascript %}
+{% endjavascript %}
+
+<script src="https://kit.fontawesome.com/d97b87339f.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.10/dist/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+	function download(abc,cd){
+      var img_url_view = abc; 
+      var img_id_view = cd;
+		axios({
+			url:img_url_view,
+			method:'GET',
+			responseType: 'blob'
+	})
+	.then((response) => {
+			const url = window.URL
+			.createObjectURL(new Blob([response.data]));
+					const link = document.createElement('a');
+					link.href = url;
+					link.setAttribute('download', 'gkhair-'+img_id_view+'.jpg');
+					document.body.appendChild(link);
+					link.click();
+	})
+	}
+		
+function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+  /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.value);
+  
+  /* Alert the copied text */
+  /* alert("Copied the text: " + copyText.value);  */
+}
+</script>
+
+<script>
+     var clipboard = new ClipboardJS('.btn');
+
+clipboard.on('success', function(e) {
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+
+    e.clearSelection();
+});
+
+clipboard.on('error', function(e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+});
+</script>
